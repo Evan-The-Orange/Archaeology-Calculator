@@ -1,0 +1,184 @@
+body {
+    margin:0;
+    padding:0;
+    width:1080px;
+    position:relative;
+    margin:0 auto 0 auto;
+    font-family: "Arial", sans-serif;
+    background: #1c1c1c;
+}
+
+#main {
+    width:100%;
+    float: left;
+    background:#1C1C1C;
+    color:#FFF;
+}
+
+    #artefacts, #materials {
+        display:table;
+        width:100%;
+    }
+    
+        .artefactlistheader, .materiallistheader {
+            display:table-row;
+            font-weight: bold;
+        }
+
+        .artefact, .material {
+            display:table-row;
+        }
+
+            .artefactinput {
+                width:50%;
+            }
+        
+        .cell {
+            display:table-cell;
+            width:10%;
+            outline:thin solid #CCC;
+            padding:4px;
+        }
+
+            .cell .mats {
+                float:right;
+            }
+
+                .material .cell div {
+                    width:25px;
+                    text-align:center;
+                    display:inline-block;
+                }
+                
+                    .material .cell div img {
+                        height:15px;
+                    }
+
+                .cell .mats img {
+                    height:17px;
+                    margin:0 2px;
+                }
+
+        .artefact .cell:first-child {
+            width:30%;
+        }
+
+#sidebar {
+    width:20%;
+    position: fixed;
+    right:0;
+    top:0;
+    color:#1C1C1C;
+    background:#AAA;
+    overflow: auto;
+    height:100%;
+}
+
+#leftsidebar {
+    width:20%;
+    position: fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    color:#1C1C1C;
+    background:#AAA;
+}
+
+.Zamorakian {
+    background-color: #A43A40;
+}
+
+.Zarosian {
+    background-color: #5A417B;
+}
+
+.Saradominist {
+    background-color: #2B4458;
+}
+
+.Armadylean {
+    background-color: #B19442;
+}
+
+.Bandosian {
+    background-color: #96AD45;
+}
+
+#statform {
+    padding:10px;
+}
+
+#expInput {
+    width:100px;
+}
+
+#potentialXPGain, #endXP, #endLvl {
+    display:block;
+    margin: 10px auto;
+    text-align:center;
+}
+
+.minForCollections {
+    background:#AAA;
+    display:inline-block;
+    color:#1C1C1C;
+    width:15px;
+    height:15px;
+    text-align:center;
+    padding: 3px;
+    border-radius:2px;
+    margin-left:5px;
+    cursor: pointer;
+}
+
+.minForCollections:hover {
+    background-color:#BBB;
+}
+
+.complete {
+    background-color:#00bf29c9;
+}
+
+
+#statform label, #statform input, #yourLevel {
+    display:inline-block;
+    width:32%;
+    text-align:center;
+}
+
+.highlight {
+    position:absolute;
+    background-color:yellow;
+    color:black;
+    width:102%;
+    margin-left:-1%;
+}
+
+#collections {
+    padding:10px;
+    height:80%;
+    overflow-y:auto;
+}
+
+.collectionCategory {
+    background:#BBB;
+}
+
+.collectionCategoryHeader {
+    display:block;
+    padding:3px;
+    background:#1c1c1c;
+    color:white;
+}
+
+.collection {
+    padding:5px;
+    border-bottom:thin solid #1c1c1c;
+}
+
+.collectionViewer {
+    float:right;
+    cursor:pointer;
+    font-size:20px;
+    margin-top:-6px;
+}
