@@ -1,16 +1,14 @@
 body {
     margin:0;
     padding:0;
-    width:1080px;
     position:relative;
-    margin:0 auto 0 auto;
     font-family: "Arial", sans-serif;
     background: #1c1c1c;
 }
 
 #main {
-    width:100%;
-    float: left;
+    width:50%;
+    margin:0 auto;
     background:#1C1C1C;
     color:#FFF;
 }
@@ -38,6 +36,8 @@ body {
             width:10%;
             outline:thin solid #CCC;
             padding:4px;
+            vertical-align:middle;
+            position:relative;
         }
 
             .cell .mats {
@@ -54,9 +54,10 @@ body {
                         height:15px;
                     }
 
-                .cell .mats img {
+                .artefact .cell .mats img {
                     height:17px;
                     margin:0 2px;
+                    vertical-align: middle;
                 }
 
         .artefact .cell:first-child {
@@ -104,6 +105,10 @@ body {
     background-color: #96AD45;
 }
 
+.Dragonkin {
+    background-color: #494343;
+}
+
 #statform {
     padding:10px;
 }
@@ -129,9 +134,10 @@ body {
     border-radius:2px;
     margin-left:5px;
     cursor: pointer;
+    font-size:14px;
 }
 
-.minForCollections:hover {
+.minForCollections:not(.complete):hover {
     background-color:#BBB;
 }
 
@@ -140,23 +146,29 @@ body {
 }
 
 
-#statform label, #statform input, #yourLevel {
+#statform label.inline, #statform input, #yourLevel {
     display:inline-block;
-    width:32%;
+    width:30%;
     text-align:center;
 }
 
+.outfitbox {
+    text-align:center;
+    margin-top:10px;
+}
+
+    .outfitbox input {
+        width:auto !important;
+    }
+
 .highlight {
-    position:absolute;
-    background-color:yellow;
-    color:black;
-    width:102%;
-    margin-left:-1%;
+
 }
 
 #collections {
+    margin-top:10px;
     padding:10px;
-    height:80%;
+    height:70%;
     overflow-y:auto;
 }
 
@@ -174,6 +186,11 @@ body {
 .collection {
     padding:5px;
     border-bottom:thin solid #1c1c1c;
+    cursor:pointer;
+}
+
+.collection:not(.complete):hover {
+    background-color:#CCC;
 }
 
 .collectionViewer {
@@ -181,4 +198,108 @@ body {
     cursor:pointer;
     font-size:20px;
     margin-top:-6px;
+}
+
+.unneeded {
+    background-color:#00bf29c9;
+    text-decoration: line-through;
+}
+
+#blinder {
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    background: rgba(0,0,0, 0.6);
+    display:none;
+    overflow:auto;
+}
+
+#popup {
+    background: #AAA;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform: translateX(-50%) translateY(calc(-50%));
+    border:thin solid #CCC;
+    border-radius:10px;
+    overflow: auto;
+}
+
+#materialStorage {    
+    display:grid;
+    grid-template-columns: 195px 195px 195px 195px 195px;
+    font-size:14px;
+}
+
+#popup span {
+    display:block;
+    text-align:center;
+    font-weight: bold;
+    font-size:24px;
+    padding:10px;
+}
+
+#popup .popupMaterial {
+    padding:10px;
+    outline:thin solid #CCC;
+}
+
+#popup .popupMaterial div:not([class]) {
+    display:inline-block;
+    text-align:center;
+    width:40px;
+}
+
+#popup .popupMaterial img {
+    height: 25px;
+}
+
+#popup .popupMaterial .materialStorageInput {
+    display:inline-block;
+}
+
+#popup .popupMaterial .materialStorageInput input {
+    display:block;
+    width:50px;
+}
+
+#popup .popupSave {
+    text-align:center;
+    padding:10px;
+}
+
+#showMaterialStorage {
+    display:block;
+    text-align:center;
+    margin:10px;
+    font-size:20px;
+}
+
+.seperator {
+    grid-column: 1/-1;
+}
+
+#materialStorage .seperator span {
+    font-size: 18px;
+}
+
+.artefact .cell img {
+    height:20px;
+    vertical-align: middle;
+}
+
+.artefact .cell div.artefactImg {
+    display:inline-block;
+    width:30px;
+    text-align:center;
+}
+
+.material {
+    cursor:pointer;
+}
+
+.material:not(.unneeded):hover {
+    background-color:#BBB;
 }

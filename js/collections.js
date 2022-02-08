@@ -4,22 +4,22 @@ var collectionList = [
         collections: [
             {
                 number: "I",
-                display: "Zarosian I",
+                display: "Zarosian I - (25)",
                 artefacts: []
             },
             {
                 number: "II",
-                display: "Zarosian II",
+                display: "Zarosian II - (81)",
                 artefacts: []
             },
             {
                 number: "III",
-                display: "Zarosian III",
+                display: "Zarosian III - (107)",
                 artefacts: []
             },
             {
                 number: "IV",
-                display: "Zarosian IV",
+                display: "Zarosian IV - (118)",
                 artefacts: []
             }
         ]
@@ -29,22 +29,22 @@ var collectionList = [
         collections: [
             {
                 number: "I",
-                display: "Zamorakian I",
+                display: "Zamorakian I - (36)",
                 artefacts: []
             },
             {
                 number: "II",
-                display: "Zamorakian II",
+                display: "Zamorakian II - (81)",
                 artefacts: []
             },
             {
                 number: "III",
-                display: "Zamorakian III",
+                display: "Zamorakian III - (104)",
                 artefacts: []
             },
             {
                 number: "IV",
-                display: "Zamorakian IV",
+                display: "Zamorakian IV - (116)",
                 artefacts: []
             }
         ]
@@ -54,22 +54,22 @@ var collectionList = [
         collections: [
             {
                 number: "I",
-                display: "Saradominist I",
+                display: "Saradominist I - (56)",
                 artefacts: []
             },
             {
                 number: "II",
-                display: "Saradominist II",
+                display: "Saradominist II - (72)",
                 artefacts: []
             },
             {
                 number: "III",
-                display: "Saradominist III",
+                display: "Saradominist III - (100)",
                 artefacts: []
             },
             {
                 number: "IV",
-                display: "Saradominist IV",
+                display: "Saradominist IV - (117)",
                 artefacts: []
             }
         ]
@@ -79,17 +79,17 @@ var collectionList = [
         collections: [
             {
                 number: "I",
-                display: "Armadylean I",
+                display: "Armadylean I - (81)",
                 artefacts: []
             },
             {
                 number: "II",
-                display: "Armadylean II",
+                display: "Armadylean II - (98)",
                 artefacts: []
             },
             {
                 number: "III",
-                display: "Armadylean III",
+                display: "Armadylean III - (118)",
                 artefacts: []
             }
         ]
@@ -99,17 +99,42 @@ var collectionList = [
         collections: [
             {
                 number: "I",
-                display: "Bandosian I",
+                display: "Bandosian I - (89)",
                 artefacts: []
             },
             {
                 number: "II",
-                display: "Bandosian II",
+                display: "Bandosian II - (100)",
                 artefacts: []
             },
             {
                 number: "III",
-                display: "Bandosian III",
+                display: "Bandosian III - (119)",
+                artefacts: []
+            }
+        ]
+    },
+    {
+        alignment: "Dragonkin",
+        collections: [
+            {
+                number: "I",
+                display: "Dragonkin I - (99)",
+                artefacts: []
+            },
+            {
+                number: "II",
+                display: "Dragonkin II - (102)",
+                artefacts: []
+            },
+            {
+                number: "III",
+                display: "Dragonkin III - (108)",
+                artefacts: []
+            },
+            {
+                number: "IV",
+                display: "Dragonkin IV - (120)",
                 artefacts: []
             }
         ]
@@ -118,7 +143,7 @@ var collectionList = [
         alignment: "Art Critic Jacques",
         collections: [
             {
-                display: "Anarchic Abstraction",
+                display: "Anarchic Abstraction - (89)",
                 artefacts: [
                     "'Disorder' painting",
                     "'The Lake of Fire' painting",
@@ -126,15 +151,15 @@ var collectionList = [
                 ]
             },
             {
-                display: "Radiant Rennaissance",
+                display: "Radiant Rennaissance - (105)",
                 artefacts: [
+                    "'The Pride of Padosan' painting",
                     "'Hallowed Be the Everlight' painting",
-                    "'The Lord of LIght' painting",
-                    "'The Pride of Padosan' painting"
+                    "'The Lord of Light' painting",
                 ]
             },
             {
-                display: "Imperial Impressionalism",
+                display: "Imperial Impressionalism - (118)",
                 artefacts: [
                     "'Solem in Umbra' painting",
                     "'Consensus ad Idem' painting",
@@ -147,7 +172,7 @@ var collectionList = [
         alignment: "Chief Tess",
         collections: [
             {
-                display: "Blingy Fings",
+                display: "Blingy Fings - (69)",
                 artefacts: [
                     "Ancient timepiece",
                     "Legatus pendant",
@@ -157,7 +182,7 @@ var collectionList = [
                 ]
             },
             {
-                display: "Smoky Fings",
+                display: "Smoky Fings - (81)",
                 artefacts: [
                     "Hookah pipe",
                     "Opulent wine goblet",
@@ -167,7 +192,7 @@ var collectionList = [
                 ]
             },
             {
-                display: "Hitty Fings",
+                display: "Hitty Fings - (89)",
                 artefacts: [
                     "Ceremonial mace",
                     "Pontifex crozier",
@@ -177,7 +202,7 @@ var collectionList = [
                 ]
             },
             {
-                display: "Showy Fings",
+                display: "Showy Fings - (92)",
                 artefacts: [
                     "Crest of Dagon",
                     "Legatus Maximus figurine",
@@ -193,25 +218,25 @@ var collectionList = [
         alignment: "General Bentnoze",
         collections: [
             {
-                display: "Red Rum Relics I",
+                display: "Red Rum Relics I - (94)",
                 artefacts: [
-                    "Ork cleaver sword",
                     "Ogre Kyzaj axe",
+                    "Ork cleaver sword",
                     "Beastkeeper helm",
-                    "'Nosorog!' sculpture"
+                    "'Nosorog!' sculpture",
                 ]
             },
             {
-                display: "Red Rum Relics",
+                display: "Red Rum Relics II - (110)",
                 artefacts: [
-                    "Hobgoblin mansticker",
                      "Ourg megahitter",
                      "Ourg tower/goblin cower shield",
-                     "'Forged in War' sculpture"
+                     "'Forged in War' sculpture",
+                     "Hobgoblin mansticker"
                 ]
             },
             {
-                display: "Red Rum Relics III",
+                display: "Red Rum Relics III - (119)",
                 artefacts: [
                     "Kal-i-kran chieftain crown",
                     "Kal-i-kran mace",
@@ -225,7 +250,7 @@ var collectionList = [
         alignment: "General Wartface",
         collections: [
             {
-                display: "Green Gobbo Goodies I",
+                display: "Green Gobbo Goodies I - (83)",
                 artefacts: [
                     "Ekeleshuun blinder mask",
                     "Narogoshuun 'Hob-da-Gob' ball",
@@ -235,7 +260,7 @@ var collectionList = [
                 ]
             },
             {
-                display: "Green Gobbo Goodies II",
+                display: "Green Gobbo Goodies II - (97)",
                 artefacts: [
                     "High priest crozier", 
                     "High priest mitre",
@@ -245,12 +270,12 @@ var collectionList = [
                 ]
             },
             {
-                display: "Green Gobbo Goodies III",
-                artefacts: [
-                    "Huzamogaarb chaos crown", 
+                display: "Green Gobbo Goodies III - (119)",
+                artefacts: [ 
+                    "Dorgeshuun spear",
+                    "Huzamogaarb chaos crown",
                     "Saragorgak star crown",
                     "Drogokishuun hook sword", 
-                    "Dorgeshuun spear",
                     "Horogothgar cooking pot", 
                     "'Da Boss Man' sculpture"
                 ]
@@ -261,7 +286,7 @@ var collectionList = [
         alignment: "Wise Old Man",
         collections: [
             {
-                display: "Wise Am the Music Man",
+                display: "Wise Am the Music Man - (91)",
                 artefacts: [
                     "Everlight harp",
                     "Everlight trumpet",
@@ -273,54 +298,54 @@ var collectionList = [
                 ]
             },
             {
-                display: "Hat Problem",
+                display: "Hat Problem - (114)",
                 artefacts: [
-                    "Beastkeeper helm",
                     "Imp mask",
                     "Ekeleshuun blinder mask",
-                    "Flat cap",
                     "High priest mitre",
+                    "Beastkeeper helm",
                     "Huzamogaarb chaos crown",
+                    "Flat cap",
                     "Praetorian hood"
                 ]
             },
             {
-                display: "Hat Hoarder",
+                display: "Hat Hoarder - (116)",
                 artefacts: [
-                    "Ceremonial unicorn ornament",
                     "Lesser demon mask",
                     "Greater demon mask",
-                    "Kal-i-kran chieftain crown",
+                    "Ceremonial unicorn ornament",
                     "Pontifex mitre",
                     "Saragorgak star crown",
+                    "Kal-i-kran chieftain crown",
                     "Tsutsaroth helm"
                 ]
             },
             {
-                display: "Magic Man",
+                display: "Magic Man - (118)",
                 artefacts: [
-                    "Ancient timepiece",
-                    "Chuluu stone",
-                    "High priest mitre",
                     "Legatus Maximus figurine",
-                    "Portable phylactery",
                     "Ritual dagger",
-                    "'Animate Dead' spell scroll",
-                    "'Exsanguinate' spell scroll",
+                    "Ancient timepiece",
                     "'Incite Fear' spell scroll",
-                    "'Smoke Cloud' spell scroll"
+                    "'Exsanguinate' spell scroll",
+                    "High priest mitre",
+                    "'Smoke Cloud' spell scroll",
+                    "Portable phylactery",
+                    "'Animate Dead' spell scroll",
+                    "Chuluu stone"
                 ]
             },
             {
-                display: "Knowledge is Power",
+                display: "Knowledge is Power - (119)",
                 artefacts: [
                     "Crest of Dagon",
-                    "Golem instruction",
-                    "Necromantic focus",
                     "Ikovian gerege",
+                    "Necromantic focus",
+                    "Golem instruction",
                     "'The Enlightened Soul' scroll",
-                    "'Da Boss Man' sculpture",
-                    "'The Eudoxian Elements' tablet"
+                    "'The Eudoxian Elements' tablet",
+                    "'Da Boss Man' sculpture"
                 ]
             }
         ]
@@ -331,7 +356,7 @@ function createCollections() {
     for (i = 0; i < collectionList.length; i++) {
         var category = collectionList[i];
 
-        if (category.alignment == "Zarosian" || category.alignment == "Zamorakian" || category.alignment == "Saradominist" || category.alignment == "Armadylean" || category.alignment == "Bandosian") {
+        if (category.alignment == "Zarosian" || category.alignment == "Zamorakian" || category.alignment == "Saradominist" || category.alignment == "Armadylean" || category.alignment == "Bandosian" || category.alignment == "Dragonkin") {
             for (x in category.collections) {
                 $(".artefact").each(function () {
                     if ($(this).hasClass(category.alignment) && $(this).hasClass(category.collections[x].number)) {
@@ -344,95 +369,33 @@ function createCollections() {
 }
 
 function highlight(artefact) {
-    var div = $(".artefact").filter(function () {
-        return $(this).data("artefact") == artefact;
+    $(".artefact").each(function() {
+        if($(this).data("artefact") == artefact) {
+            $(this).show().addClass("highlight");
+        } else {
+            if(!$(this).hasClass("highlight")) {
+                $(this).hide();
+            }
+        }
     });
-    
-    var top = div.offset().top;
-
-    div.addClass("highlight").css("top", top);
 }
 
 function removeHighlights() {
     $(".collectionViewer").data("active", false);
-    $(".highlight").each(function () {
-        $(this).nextUntil(".highlight", ".artefact:not(.highlight)").find(".cell").css("padding-top", "4px");
-        $(this).removeClass("highlight");
-    });
+    
+    $(".artefact").show().removeClass("highlight");
 }
 
 
 function highlightCollection(collection) {
     removeHighlights();
-    var artefacts;
-    for (i in collectionList) {
-        for (var x in collectionList[i].collections) {
-            if (collectionList[i].collections[x].display == collection) {
-                artefacts = collectionList[i].collections[x].artefacts;
-            }
-        }
-    }
-
-    for (i = artefacts.length - 1; i >= 0; i--) {
-        highlight(artefacts[i]);
-    }
-
-    var numHighlightsInARow = 0;
-
-    $(".highlight").each(function () {
-        var numAfterUntilHighlight = $(this).nextUntil(".highlight", ".artefact").length;
-        numHighlightsInARow += 1
-
-        //There are more than one non-highlighted artefacts after this highlight in a row, and this is not the last highlight
-        if (numAfterUntilHighlight > 0 && ($(this).index(".highlight") < $(this).siblings(".highlight").length)) {
-            var padding = parseInt($(this).outerHeight());
-
-            for (i = 0; i < numHighlightsInARow - 1; i++) {
-                padding += parseInt($(this).prevAll().eq(i).outerHeight());
-            }
-
-
-
-            $(this).next(".artefact").find(".cell").css("padding-top", (padding + 4) + "px");
-
-            numHighlightsInARow = 0;
-        } else if (($(this).index(".highlight") == $(this).siblings(".highlight").length)) {
-            //last highlight
-            var padding = 30 + (30 * $(this).prevUntil(".artefact:not(.highlight)").length);
-
-            $(this).next(".artefact").find(".cell").css("padding-top", padding + 4 + "px");
-        }
-    })
-}
-
-function checkCollections() {
-    for (var i = 0; i < collectionList.length; i++) {
-        for (var x = 0; x < collectionList[i].collections.length; x++) {
-            var collectionComplete = true;
-
-            for (var y = 0; y < collectionList[i].collections[x].artefacts.length; y++) {
-                var artefact = collectionList[i].collections[x].artefacts[y];
-                var toCheck = $(".minForCollections").filter(function () {
-                    return $(this).data("artefact-collection") == artefact;
-                });
-
-                if (!toCheck.hasClass("complete")) {
-                    collectionComplete = false;
+    
+    for(i in collectionList) {
+        for(x in collectionList[i].collections) {
+            if(collectionList[i].collections[x].display == collection) {
+                for(y in collectionList[i].collections[x].artefacts) {
+                    highlight(collectionList[i].collections[x].artefacts[y]);
                 }
-            }
-
-            if (collectionComplete) {
-                var collectionLabel = $(".collection").filter(function () {
-                    return $(this).data("collection") == collectionList[i].collections[x].display;
-                })
-
-                collectionLabel.addClass("complete");
-            } else {
-                var collectionLabel = $(".collection").filter(function () {
-                    return $(this).data("collection") == collectionList[i].collections[x].display;
-                })
-
-                collectionLabel.removeClass("complete");
             }
         }
     }
