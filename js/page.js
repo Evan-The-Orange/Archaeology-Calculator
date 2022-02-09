@@ -6,9 +6,20 @@ var levels = Array(
     31777943, 35085654, 38737661, 42769801, 47221641, 52136869, 57563718, 63555443, 70170840, 77474828, 85539082, 94442737, 104273167, 115126838, 127110260, 140341028, 154948977, 171077457, 188884740
 );
 
+var ownedModified = false;
+
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+function copyToClipboard(text) {
+      var input = document.createElement('textarea');
+      input.innerHTML = text;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      return document.body.removeChild(input);
+    }
 
 $(document).ready(function () {
 
@@ -56,7 +67,12 @@ $(document).ready(function () {
                 $("<span/>", {
                     class: "cell",
                 })
-                .prepend($("<span/>", {text: recipe.artefact}))
+                .prepend($("<span/>", {
+                  text: recipe.artefact,
+                  onclick: `copyToClipboard("${recipe.artefact}")`,
+                  class: "artefactName",
+                  title: "copy to clipboard"
+                }))
                 .prepend(artefactImg)
                 .append(img)
             ).append(
@@ -73,7 +89,15 @@ $(document).ready(function () {
                 $("<div/>", {
                     class: "cell"
                 }).append(
-                    $("<input type='number' class='artefactinput' value='0'/>").data("artefact", recipe.artefact).data("id", recipe.artefact)
+                    $("<input type='number' class='artefactinput' value='0'/>")
+                    .data("artefact", recipe.artefact).data("id", `${recipe.artefact} (damaged)`)
+                  )
+            ).append(
+                $("<div/>", {
+                    class: "cell"
+                }).append(
+                    $("<input type='number' class='restoredinput' value='0'/>")
+                    .data("artefact", recipe.artefact).data("id", recipe.artefact)
                 )
             ).append(
                 $("<span/>", {
@@ -82,6 +106,13 @@ $(document).ready(function () {
                 }).data("artefact", recipe.artefact)
             )
         );
+
+        setInterval(() => {
+          if(ownedModified) {
+            ownedModified = false;
+            saveData();
+          }
+        }, 5000)
 
         $("#loading").remove();
     });
@@ -98,7 +129,7 @@ $(document).ready(function () {
                 src: "img/" + imgstr + ".webp"
             });
         }
-        
+
 
         var imgObj = $("<div/>").append(imgObj);
 
@@ -210,7 +241,15 @@ $(document).ready(function () {
         if (parseInt($(this).val()) < 0) {
             $(this).val(0);
         }
+        ownedModified = true;
         update($(this).data("artefact"), $(this).val());
+    });
+
+    $(".restoredinput").change(function () {
+        if (parseInt($(this).val()) < 0) {
+            $(this).val(0);
+        }
+        ownedModified = true;
     });
 
     $("#expInput").change(function () {
@@ -252,6 +291,7 @@ $(document).ready(function () {
 
         if(reset) {
             $(".artefactinput").val(0);
+            $(".restoredinput").val(0);
             $(".artefactpotential").text("0.0");
             update();
             calculateTotalPotentialXP();
@@ -302,7 +342,7 @@ $(document).ready(function () {
                     if(recipe.alignment.indexOf("Zarosian") > -1) {
                         highlight(recipe.artefact);
                     }
-                    
+
                 }
             } else if(str.indexOf("zamorak") > -1) {
                 for(i in recipes) {
@@ -311,7 +351,7 @@ $(document).ready(function () {
                     if(recipe.alignment.indexOf("Zamorakian") > -1) {
                         highlight(recipe.artefact);
                     }
-                    
+
                 }
             } else if(str.indexOf("saradomin") > -1) {
                 for(i in recipes) {
@@ -320,7 +360,7 @@ $(document).ready(function () {
                     if(recipe.alignment.indexOf("Saradominist") > -1) {
                         highlight(recipe.artefact);
                     }
-                    
+
                 }
             } else if(str.indexOf("armadyl") > -1) {
                 for(i in recipes) {
@@ -337,7 +377,7 @@ $(document).ready(function () {
                     if(recipe.alignment.indexOf("Bandosian") > -1) {
                         highlight(recipe.artefact);
                     }
-                    
+
                 }
             }
         } else {
@@ -396,13 +436,13 @@ function calculateTotalMaterials() {
                 }).find(".materialamount");
 
                 var currentNeeded = parseInt($numberNeeded.text().replace(/,/g, ""));
-                
+
                 $numberNeeded.text(currentNeeded + (numRequired * numToMake));
             }
         }
     });
 
-    
+
     $(".material").each(function () {
         var $material = $(this);
         var mat = $material.data("material");
@@ -417,9 +457,9 @@ function calculateTotalMaterials() {
                 if (numberInStorage == null) {
                     numberInStorage = 0;
                 }
-    
+
                 var actualAmountNeeded = numNeeded - numberInStorage;
-    
+
                 //$amountNeeded.text(actualAmountNeeded + " (Total: " + numNeeded + ")");
                 if(actualAmountNeeded <= 0) {
                     actualAmountNeeded = 0;
@@ -429,8 +469,8 @@ function calculateTotalMaterials() {
                 }
                 $amountNeeded.text(actualAmountNeeded + " (").append($("<b/>", { text: numNeeded })).append(")");
             }
-        }        
-        
+        }
+
 
 
 
@@ -464,7 +504,7 @@ function calculateTotalPotentialXP() {
             lvl = i + 1;
         }
     }
-    
+
     var remainingXP = parseInt(levels[lvl]) - xp;
 
     $("#endXP").text("Ending XP: " + numberWithCommas(parseInt(xp)));
@@ -570,7 +610,7 @@ function loadData() {
 
     if(localStorage.getItem("materialstorage") !== null) {
         var storageData = JSON.parse(localStorage.getItem("materialstorage"));
-        
+
         $(".materialStorageInput").each(function() {
             var input = $(this).children("input");
             var mat = input.data("materialstoragemat");
@@ -580,7 +620,7 @@ function loadData() {
             } else {
                 input.val(0);
             }
-            
+
         })
     }
 }

@@ -17,7 +17,7 @@ body {
         display:table;
         width:100%;
     }
-    
+
         .artefactlistheader, .materiallistheader {
             display:table-row;
             font-weight: bold;
@@ -27,10 +27,10 @@ body {
             display:table-row;
         }
 
-            .artefactinput {
+            .artefactinput, .restoredinput {
                 width:50%;
             }
-        
+
         .cell {
             display:table-cell;
             width:10%;
@@ -49,7 +49,7 @@ body {
                     text-align:center;
                     display:inline-block;
                 }
-                
+
                     .material .cell div img {
                         height:15px;
                     }
@@ -227,7 +227,7 @@ body {
     overflow: auto;
 }
 
-#materialStorage {    
+#materialStorage {
     display:grid;
     grid-template-columns: 195px 195px 195px 195px 195px;
     font-size:14px;
@@ -294,6 +294,10 @@ body {
     display:inline-block;
     width:30px;
     text-align:center;
+}
+
+.artefactName:hover {
+    text-decoration:underline;
 }
 
 .material {
