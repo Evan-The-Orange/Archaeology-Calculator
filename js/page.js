@@ -6,7 +6,7 @@ var levels = Array(
     31777943, 35085654, 38737661, 42769801, 47221641, 52136869, 57563718, 63555443, 70170840, 77474828, 85539082, 94442737, 104273167, 115126838, 127110260, 140341028, 154948977, 171077457, 188884740
 );
 
-var ownedModified = false;
+var ownedModified;
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -232,6 +232,7 @@ $(document).ready(function () {
         if ($(this).data("active") == false) {
             highlightCollection($(this).data("collection"));
             $(this).data("active", true);
+            $("#searchBox").val($(this).data("collection"));
         } else {
             removeHighlights();
         }
@@ -377,16 +378,18 @@ $(document).ready(function () {
                     if(recipe.alignment.indexOf("Bandosian") > -1) {
                         highlight(recipe.artefact);
                     }
-
                 }
             }
         } else {
-            for(i in recipes) {
-                var recipe = recipes[i].artefact;
-                if(recipe.toLowerCase().indexOf(str) > -1) {
-                    highlight(recipe);
+            $(".artefact").each(function() {
+                if($(this).data("artefact").toLowerCase().includes(str)) {
+                    $(this).css("display", "table-row").addClass("highlight");
+                } else {
+                    if(!$(this).hasClass("highlight")) {
+                        $(this).css("display", "none");
+                    }
                 }
-            }
+            });
         }
     });
 });

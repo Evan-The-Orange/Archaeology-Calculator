@@ -262,7 +262,7 @@ var collectionList = [
             {
                 display: "Green Gobbo Goodies II - (97)",
                 artefacts: [
-                    "High priest crozier", 
+                    "High priest crozier",
                     "High priest mitre",
                     "High priest orb",
                     "Idithuun horn ring",
@@ -271,17 +271,17 @@ var collectionList = [
             },
             {
                 display: "Green Gobbo Goodies III - (119)",
-                artefacts: [ 
+                artefacts: [
                     "Dorgeshuun spear",
                     "Huzamogaarb chaos crown",
                     "Saragorgak star crown",
-                    "Drogokishuun hook sword", 
-                    "Horogothgar cooking pot", 
+                    "Drogokishuun hook sword",
+                    "Horogothgar cooking pot",
                     "'Da Boss Man' sculpture"
                 ]
             }
         ]
-    }, 
+    },
     {
         alignment: "Wise Old Man",
         collections: [
@@ -368,13 +368,14 @@ function createCollections() {
     }
 }
 
-function highlight(artefact) {
+function highlight(matchlist) {
+    var matchlist = [matchlist].flat(); //wrap for single object case
     $(".artefact").each(function() {
-        if($(this).data("artefact") == artefact) {
-            $(this).show().addClass("highlight");
+        if(matchlist.includes($(this).data("artefact"))) {
+            $(this).css("display", "table-row").addClass("highlight");
         } else {
             if(!$(this).hasClass("highlight")) {
-                $(this).hide();
+                $(this).css("display", "none");
             }
         }
     });
@@ -382,20 +383,17 @@ function highlight(artefact) {
 
 function removeHighlights() {
     $(".collectionViewer").data("active", false);
-    
-    $(".artefact").show().removeClass("highlight");
+    $(".artefact").css("display", "table-row").removeClass("highlight");
 }
 
 
 function highlightCollection(collection) {
     removeHighlights();
-    
+
     for(i in collectionList) {
         for(x in collectionList[i].collections) {
             if(collectionList[i].collections[x].display == collection) {
-                for(y in collectionList[i].collections[x].artefacts) {
-                    highlight(collectionList[i].collections[x].artefacts[y]);
-                }
+                highlight(collectionList[i].collections[x].artefacts);
             }
         }
     }
