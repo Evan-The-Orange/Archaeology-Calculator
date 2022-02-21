@@ -566,7 +566,9 @@ function loadData() {
                         $(this).prop("checked", data[id]);
                     } else {
                         $(this).val(data[id]);
-                        update(id, data[id], true);
+                        if ($(this).hasClass("artefactinput")) {
+                          update($(this).data("artefact"), data[id], true);
+                        }
                     }
                 }
             });
