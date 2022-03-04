@@ -1,6 +1,7 @@
 var collectionList = [
     {
         alignment: "Zarosian",
+        collectors: ["Velucia", "Soran"],
         collections: [
             {
                 number: "I",
@@ -41,6 +42,7 @@ var collectionList = [
     },
     {
         alignment: "Zamorakian",
+        collectors: ["Velucia", "Isaura"],
         collections: [
             {
                 number: "I",
@@ -66,6 +68,7 @@ var collectionList = [
     },
     {
         alignment: "Saradominist",
+        collectors: ["Velucia", "Sir Atcha"],
         collections: [
             {
                 number: "I",
@@ -91,6 +94,7 @@ var collectionList = [
     },
     {
         alignment: "Armadylean",
+        collectors: ["Velucia", "Lowse"],
         collections: [
             {
                 number: "I",
@@ -111,6 +115,7 @@ var collectionList = [
     },
     {
         alignment: "Bandosian",
+        collectors: ["Velucia"],
         collections: [
             {
                 number: "I",
@@ -131,6 +136,7 @@ var collectionList = [
     },
     {
         alignment: "Dragonkin",
+        collectors: ["Velucia", "Sharrigan"],
         collections: [
             {
                 number: "I",
@@ -155,7 +161,7 @@ var collectionList = [
         ]
     },
     {
-        alignment: "Art Critic Jacques",
+        collectors: ["Art Critic Jacques"],
         collections: [
             {
                 display: "Anarchic Abstraction - (89)",
@@ -184,7 +190,7 @@ var collectionList = [
         ]
     },
     {
-        alignment: "Chief Tess",
+        collectors: ["Chief Tess"],
         collections: [
             {
                 display: "Blingy Fings - (69)",
@@ -230,7 +236,7 @@ var collectionList = [
         ]
     },
     {
-        alignment: "General Bentnoze",
+        collectors: ["General Bentnoze"],
         collections: [
             {
                 display: "Red Rum Relics I - (94)",
@@ -262,7 +268,7 @@ var collectionList = [
         ]
     },
     {
-        alignment: "General Wartface",
+        collectors: ["General Wartface"],
         collections: [
             {
                 display: "Green Gobbo Goodies I - (83)",
@@ -298,7 +304,7 @@ var collectionList = [
         ]
     },
     {
-        alignment: "Wise Old Man",
+        collectors: ["Wise Old Man"],
         collections: [
             {
                 display: "Wise Am the Music Man - (91)",
@@ -364,6 +370,47 @@ var collectionList = [
                 ]
             }
         ]
+    },
+    {
+        collectors: ["Eblis"],
+        collections: [
+            {
+                display: "Finery of the Inquisition - (64)",
+                artefacts: [
+                    "Inquisitor's ceremonial armour",
+                    "Inquisitor's ceremonial mask",
+                    "Inquisitor's seal"
+                ]
+            },
+            {
+                display: "Finery of the Inquisition - (67)",
+                artefacts: [
+                    "Apex cap",
+                    "Infula robes",
+                    "Loarnab rod",
+                    "'The Serpent's Fall' carving"
+                ]
+            },
+            {
+                display: "Urns of the Empire - (67)",
+                artefacts: [
+                    "Funerary urn of shadow",
+                    "Funerary urn of smoke",
+                    "Funerary urn of ice",
+                    "Funerary urn of blood",
+                    "Funerary urn of miasma"
+                ]
+            },
+            {
+                display: "Entertaining the Masses - (67)",
+                artefacts: [
+                    "Decorative amphora",
+                    "Gladiator helmet",
+                    "Gladiator sword",
+                    "Model chariot"
+                ]
+            }
+        ]
     }
 ]
 
@@ -371,12 +418,9 @@ function createCollections() {
     for (i = 0; i < collectionList.length; i++) {
         var category = collectionList[i];
 
-        if (category.alignment == "Zarosian"
-              || category.alignment == "Zamorakian"
-              || category.alignment == "Saradominist"
-              || category.alignment == "Armadylean"
-              || category.alignment == "Bandosian"
-              || category.alignment == "Dragonkin") {
+        if (["Zarosian", "Zamorakian", "Saradominist",
+              "Armadylean", "Bandosian", "Dragonkin"]
+              .includes(category.alignment)) {
             for (x in category.collections) {
                 $(".artefact").each(function () {
                     if ($(this).hasClass(category.alignment) && $(this).hasClass(category.collections[x].number)) {

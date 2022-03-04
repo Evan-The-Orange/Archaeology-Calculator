@@ -188,28 +188,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
         );
     });
 
-    collectionList.forEach(function (cat) {
-        var collections = $("<div/>", {
+    var collectorCollections = {};
+    collectionList.forEach(cat => {
+      cat.collectors.forEach(collector => {
+        if (collector == "Velucia") {
+          collectorCollections["Velucia"] = [...(collectorCollections["Velucia"] || []),
+          ...cat.collections.map(collection => {
+            return {...collection, ...{display: "Museum - " + collection.display}}
+          })];
+        } else {
+          collectorCollections[collector] = cat.collections;
+        }
+      });
+    });
+    Object.entries(collectorCollections).forEach(([collector, collections]) => {
+        var collectionsElem = $("<div/>", {
             class: "collectionCategoryList"
         });
 
-        for (i in cat.collections) {
-            collections.append(
+        collections.forEach(collection => {
+            collectionsElem.append(
                 $("<div/>", {
                     class: "collection"
-                }).data("collection", cat.collections[i].display).append(
+                }).data("collection", collection.display).append(
                     $("<span/>", {
                         class: "collectionName",
-                        text: cat.collections[i].display
+                        text: collection.display
                     })
                 ).append(
                     $("<span/>", {
                         class: "collectionViewer",
                         text: '\u2315'
-                    }).data("collection", cat.collections[i].display).data("active", false)
+                    }).data("collection", collection.display).data("active", false)
                 )
             );
-        }
+        });
 
         $("#collections").append(
             $("<div/>", {
@@ -217,11 +230,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }).append(
                 $("<span/>", {
                     class: "collectionCategoryHeader",
-                    text: cat.alignment
+                    text: collector
                 })
-            ).append(collections)
+            ).append(collectionsElem)
         );
-    });
+      });
+
+
 
     createCollections();
     loadData();
