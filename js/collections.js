@@ -452,6 +452,9 @@ function removeHighlights() {
 
 
 function highlightCollection(collection) {
+    if (collection.startsWith("Museum - ")) {
+      collection = collection.substring(9);
+    }
     removeHighlights();
 
     for(i in collectionList) {

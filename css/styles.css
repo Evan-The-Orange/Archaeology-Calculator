@@ -83,6 +83,8 @@ body {
     bottom:0;
     color:#1C1C1C;
     background:#AAA;
+    display:flex;
+    flex-direction:column;
 }
 
 .Zamorakian {
@@ -168,8 +170,8 @@ body {
 #collections {
     margin-top:10px;
     padding:10px;
-    height:70%;
     overflow-y:auto;
+    flex:auto;
 }
 
 .collectionCategory {
