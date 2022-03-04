@@ -21,7 +21,7 @@ function copyToClipboard(text) {
       return document.body.removeChild(input);
     }
 
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function(event) {
 
     recipes.forEach(function (recipe) {
         var mats = getMatsByArtefact(recipe.artefact);

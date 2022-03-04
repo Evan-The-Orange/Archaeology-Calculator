@@ -657,7 +657,7 @@ var recipes = [
         new Material("Carbon black", 26),
         new Material("Compass rose", 26)
     ], "Dragonkin III"),
-    
+
     new Recipe("Ancient magic tablet", 107, 27000, [
         new Material("Ancient vis", 40),
         new Material("Blood of Orcus", 64)
@@ -856,8 +856,109 @@ var recipes = [
     new Recipe("Gold dish", 120, 46666.7, [
         new Material("Goldrune", 86),
         new Material("Dragon metal", 54)
-    ], "Dragonkin IV")
+    ], "Dragonkin IV"),
+
+    //sennisten digsite
+    new Recipe("Apex Cap", 60, 2333.3, [
+        new Material("Samite silk", 28),
+        new Material("Leather scraps", 12),
+        new Material("Ancient vis", 20),
+    ], "Zarosian V"),
+    new Recipe("Curse tablet", 60, 2333.3, [
+        new Material("Imperial steel", 16),
+        new Material("Zarosian insignia", 12),
+        new Material("Soapstone", 20),
+        new Material("Blood of Orcus", 12),
+    ], "Zarosian V"),
+    new Recipe("Funerary urn of shadow", 60, 2333.3, [
+        new Material("Soapstone", 26),
+        new Material("Tyrian purple	", 14),
+        new Material("Ancient vis", 20),
+    ], "Zarosian V"),
+    new Recipe("Infula robes", 62, 2800, [
+        new Material("Samite silk	", 26),
+        new Material("Leather scraps", 12),
+        new Material("Goldrune", 12),
+        new Material("Tyrian purple	", 12),
+    ], "Zarosian V"),
+    new Recipe("Funerary urn of smoke", 62, 2800, [
+        new Material("Soapstone", 28),
+        new Material("Tyrian purple", 14),
+        new Material("Ancient vis", 20),
+    ], "Zarosian V"),
+    new Recipe("Hand of the Ancients", 62, 2800, [
+        new Material("Blood of Orcus", 12),
+        new Material("White oak", 18),
+        new Material("Ancient vis", 14),
+        new Material("Goldrune", 18),
+    ], "Zarosian V"),
+    new Recipe("Decorative amphora", 63, 3033.3, [
+        new Material("Tyrian purple", 16),
+        new Material("Ancient vis", 18),
+        new Material("Soapstone", 28),
+    ], "Zarosian VI"),
+    new Recipe("Funerary urn of ice", 63, 3033.3, [
+        new Material("Soapstone	", 28),
+        new Material("Tyrian purple", 14),
+        new Material("Ancient vis", 20),
+    ], "Zarosian VI"),
+    new Recipe("Loarnab rod", 63, 3033.3, [
+        new Material("White oak", 28),
+        new Material("Blood of Orcus", 16),
+        new Material("Imperial steel", 18),
+    ], "Zarosian VI"),
+    new Recipe("Inquisitor's seal", 64, 3266.7, [
+        new Material("Tyrian purple", 14),
+        new Material("Zarosian insignia", 20),
+        new Material("Ancient vis", 14),
+        new Material("Goldrune", 14),
+    ], "Zarosian VI"),
+    new Recipe("Inquisitor's ceremonial mask", 64, 3266.7, [
+        new Material("Ancient vis", 14),
+        new Material("Leather scraps", 12),
+        new Material("Blood of Orcus", 14),
+        new Material("Samite silk", 22),
+    ], "Zarosian VI"),
+    new Recipe("Inquisitor's ceremonial armour", 64, 3266.7, [
+        new Material("Leather scraps", 14),
+        new Material("Samite silk", 30),
+        new Material("Tyrian purple	", 18),
+    ], "Zarosian VI"),
+    new Recipe("Gladiator sword", 66, 3773.3, [
+        new Material("Imperial steel", 30),
+        new Material("Goldrune", 18),
+        new Material("Zarosian insignia", 16),
+    ], "Zarosian VII"),
+    new Recipe("Gladiator helmet", 66, 3773.3, [
+        new Material("Imperial steel", 30),
+        new Material("Blood of Orcus", 16),
+        new Material("Leather scraps", 18),
+    ], "Zarosian VII"),
+    new Recipe("Funerary urn of blood", 66, 3773.3, [
+        new Material("Soapstone", 30),
+        new Material("Tyrian purple", 14),
+        new Material("Blood of Orcus", 20),
+    ], "Zarosian VII"),
+    new Recipe("'The Serpent's Fall' carving", 67, 3966.7, [
+        new Material("Vellum", 16),
+        new Material("Tyrian purple", 24),
+        new Material("Blood of Orcus", 12),
+        new Material("White oak", 12),
+    ], "Zarosian VII"),
+    new Recipe("Model chariot", 67, 3966.7, [
+        new Material("Vellum", 12),
+        new Material("Imperial steel", 18),
+        new Material("Goldrune", 20	),
+        new Material("Zarosian insignia", 14),
+    ], "Zarosian VII"),
+    new Recipe("Funerary urn of miasma", 67, 3966.7, [
+        new Material("Soapstone", 30),
+        new Material("Tyrian purple	", 14),
+        new Material("Ancient vis", 20),
+    ], "Zarosian VII"),
 ];
+
+recipes.sort((a, b) => a.level - b.level);
 
 function getRecipeByArtefact(artefact) {
     for (i = 0; i < recipes.length; i++) {

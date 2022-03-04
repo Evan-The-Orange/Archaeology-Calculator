@@ -21,6 +21,21 @@ var collectionList = [
                 number: "IV",
                 display: "Zarosian IV - (118)",
                 artefacts: []
+            },
+            {
+                number: "V",
+                display: "Zarosian V - (62)",
+                artefacts: []
+            },
+            {
+                number: "VI",
+                display: "Zarosian VI - (64)",
+                artefacts: []
+            },
+            {
+                number: "VII",
+                display: "Zarosian VII - (67)",
+                artefacts: []
             }
         ]
     },
@@ -356,7 +371,12 @@ function createCollections() {
     for (i = 0; i < collectionList.length; i++) {
         var category = collectionList[i];
 
-        if (category.alignment == "Zarosian" || category.alignment == "Zamorakian" || category.alignment == "Saradominist" || category.alignment == "Armadylean" || category.alignment == "Bandosian" || category.alignment == "Dragonkin") {
+        if (category.alignment == "Zarosian"
+              || category.alignment == "Zamorakian"
+              || category.alignment == "Saradominist"
+              || category.alignment == "Armadylean"
+              || category.alignment == "Bandosian"
+              || category.alignment == "Dragonkin") {
             for (x in category.collections) {
                 $(".artefact").each(function () {
                     if ($(this).hasClass(category.alignment) && $(this).hasClass(category.collections[x].number)) {
