@@ -196,6 +196,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
           ...cat.collections.map(collection => {
             return {...collection, ...{display: "Museum - " + collection.display}}
           })];
+        } else if (collector == "Soran") {
+          collectorCollections[collector] = cat.collections.filter(collection => !collection.display.startsWith("Zarosian V"));
         } else {
           collectorCollections[collector] = cat.collections;
         }

@@ -409,6 +409,18 @@ var collectionList = [
                     "Gladiator sword",
                     "Model chariot"
                 ]
+            },
+            {
+                display: "Imperial Sorcery - (107)",
+                artefacts: [
+                    "'Incite Fear' spell scroll",
+                    "Curse tablet",
+                    "'Exsanguinate' spell scroll",
+                    "Necromantic focus",
+                    "'Smoke Cloud' spell scroll",
+                    "Ancient magic tablet",
+                    "'Animate Dead' spell scroll"
+                ]
             }
         ]
     }
