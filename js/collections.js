@@ -415,6 +415,7 @@ var collectionList = [
                 artefacts: [
                     "'Incite Fear' spell scroll",
                     "Curse tablet",
+                    "Hand of the Ancients",
                     "'Exsanguinate' spell scroll",
                     "Necromantic focus",
                     "'Smoke Cloud' spell scroll",
