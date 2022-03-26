@@ -6,11 +6,22 @@ var levels = Array(
     31777943, 35085654, 38737661, 42769801, 47221641, 52136869, 57563718, 63555443, 70170840, 77474828, 85539082, 94442737, 104273167, 115126838, 127110260, 140341028, 154948977, 171077457, 188884740
 );
 
+var ownedModified;
+
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-$(document).ready(function () {
+function copyToClipboard(text) {
+      var input = document.createElement('textarea');
+      input.innerHTML = text;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      return document.body.removeChild(input);
+    }
+
+document.addEventListener("DOMContentLoaded", function(event) {
 
     recipes.forEach(function (recipe) {
         var mats = getMatsByArtefact(recipe.artefact);
@@ -18,10 +29,19 @@ $(document).ready(function () {
 
         mats.forEach(function (mat) {
             var imgstr = mat.name.replace(/ /g, "_");
-            var imgObj = $("<img/>", {
-                src: "img/" + imgstr + ".webp",
-                title: mat.name + " x" + mat.numRequired
-            });
+            var imgObj;
+
+            if(imgstr == "Bronze_bar") {
+                imgObj = $("<img/>", {
+                    src: "img/" + imgstr + ".png",
+                    title: mat.name + " x" + mat.numRequired
+                });
+            } else {
+                imgObj = $("<img/>", {
+                    src: "img/" + imgstr + ".webp",
+                    title: mat.name + " x" + mat.numRequired
+                });
+            }
 
             img.append(imgObj);
         });
@@ -31,14 +51,30 @@ $(document).ready(function () {
             text: recipe.minForCollection
         }).data("artefact-collection", recipe.artefact));
 
+
+        var artefactImg = $("<div/>", {
+            class: "artefactImg"
+        }).append(
+            $("<img/>", {
+                src: "img/artefacts/" + recipe.artefact.replace(/ /g, "_").replace(/\//g, "-") + ".webp"
+            }
+        ));
+
         $("#artefacts").append(
             $("<div/>", {
                 class: "artefact " + recipe.alignment
             }).data("artefact", recipe.artefact).append(
                 $("<span/>", {
                     class: "cell",
-                    text: recipe.artefact
-                }).append(img)
+                })
+                .prepend($("<span/>", {
+                  text: recipe.artefact,
+                  onclick: `copyToClipboard("${recipe.artefact}")`,
+                  class: "artefactName",
+                  title: "copy to clipboard"
+                }))
+                .prepend(artefactImg)
+                .append(img)
             ).append(
                 $("<span/>", {
                     class: "cell",
@@ -53,7 +89,15 @@ $(document).ready(function () {
                 $("<div/>", {
                     class: "cell"
                 }).append(
-                    $("<input type='number' class='artefactinput' value='0'/>").data("artefact", recipe.artefact).data("id", recipe.artefact)
+                    $("<input type='number' class='artefactinput' value='0'/>")
+                    .data("artefact", recipe.artefact).data("id", `${recipe.artefact} (damaged)`)
+                  )
+            ).append(
+                $("<div/>", {
+                    class: "cell"
+                }).append(
+                    $("<input type='number' class='restoredinput' value='0'/>")
+                    .data("artefact", recipe.artefact).data("id", recipe.artefact)
                 )
             ).append(
                 $("<span/>", {
@@ -63,14 +107,29 @@ $(document).ready(function () {
             )
         );
 
+        setInterval(() => {
+          if(ownedModified) {
+            ownedModified = false;
+            saveData();
+          }
+        }, 5000)
+
         $("#loading").remove();
     });
 
     materialList.forEach(function (mat) {
         var imgstr = mat.replace(/ /g, "_");
-        var imgObj = $("<img/>", {
-            src: "img/" + imgstr + ".webp"
-        });
+        var imgObj;
+        if(imgstr == "Bronze_bar") {
+            imgObj = $("<img/>", {
+                src: "img/" + imgstr + ".png"
+            });
+        } else {
+            imgObj = $("<img/>", {
+                src: "img/" + imgstr + ".webp"
+            });
+        }
+
 
         var imgObj = $("<div/>").append(imgObj);
 
@@ -90,30 +149,82 @@ $(document).ready(function () {
                 })
             )
         );
+
+        if(mat == "Sapphire") {
+            $("#materialStorage").append(
+                $("<div/>", {
+                    class:"seperator"
+                })
+                .append(
+                    $("<span/>", {
+                        text: "Secondary Materials"
+                    })
+                )
+            );
+        }
+
+        $("#materialStorage").append(
+            $("<div/>", {
+                class: "popupMaterial"
+            })
+            .append(imgObj.clone())
+            .append(
+                $("<div/>", {
+                    class: "materialStorageInput"
+                })
+                .append(
+                    $("<label/>", {
+                        text: mat
+                    })
+                )
+                .append(
+                    $("<input/>", {
+                        type: "number",
+                        value: 0,
+                        data: { "materialstoragemat": mat}
+                    })
+                )
+            )
+        );
     });
 
-    collectionList.forEach(function (cat) {
-        var collections = $("<div/>", {
+    var collectorCollections = {};
+    collectionList.forEach(cat => {
+      cat.collectors.forEach(collector => {
+        if (collector == "Velucia") {
+          collectorCollections["Velucia"] = [...(collectorCollections["Velucia"] || []),
+          ...cat.collections.map(collection => {
+            return {...collection, ...{display: "Museum - " + collection.display}}
+          })];
+        } else if (collector == "Soran") {
+          collectorCollections[collector] = cat.collections.filter(collection => !collection.display.startsWith("Zarosian V"));
+        } else {
+          collectorCollections[collector] = cat.collections;
+        }
+      });
+    });
+    Object.entries(collectorCollections).forEach(([collector, collections]) => {
+        var collectionsElem = $("<div/>", {
             class: "collectionCategoryList"
         });
 
-        for (i in cat.collections) {
-            collections.append(
+        collections.forEach(collection => {
+            collectionsElem.append(
                 $("<div/>", {
                     class: "collection"
-                }).data("collection", cat.collections[i].display).append(
+                }).data("collection", collection.display).append(
                     $("<span/>", {
                         class: "collectionName",
-                        text: cat.collections[i].display
+                        text: collection.display
                     })
                 ).append(
                     $("<span/>", {
                         class: "collectionViewer",
                         text: '\u2315'
-                    }).data("collection", cat.collections[i].display).data("active", false)
+                    }).data("collection", collection.display).data("active", false)
                 )
             );
-        }
+        });
 
         $("#collections").append(
             $("<div/>", {
@@ -121,20 +232,24 @@ $(document).ready(function () {
             }).append(
                 $("<span/>", {
                     class: "collectionCategoryHeader",
-                    text: cat.alignment
+                    text: collector
                 })
-            ).append(collections)
+            ).append(collectionsElem)
         );
-    });
+      });
+
+
 
     createCollections();
     loadData();
-    checkCollections();
+    update();
 
-    $(".collectionViewer").click(function () {
+    $(".collectionViewer").click(function (e) {
+        e.stopPropagation();
         if ($(this).data("active") == false) {
             highlightCollection($(this).data("collection"));
             $(this).data("active", true);
+            $("#searchBox").val($(this).data("collection"));
         } else {
             removeHighlights();
         }
@@ -144,7 +259,15 @@ $(document).ready(function () {
         if (parseInt($(this).val()) < 0) {
             $(this).val(0);
         }
+        ownedModified = true;
         update($(this).data("artefact"), $(this).val());
+    });
+
+    $(".restoredinput").change(function () {
+        if (parseInt($(this).val()) < 0) {
+            $(this).val(0);
+        }
+        ownedModified = true;
     });
 
     $("#expInput").change(function () {
@@ -166,6 +289,11 @@ $(document).ready(function () {
         saveData();
     });
 
+    $("#outfit").change(function () {
+        calculateTotalPotentialXP();
+        saveData();
+    })
+
     $(".minForCollections").click(function () {
         if ($(this).hasClass("complete")) {
             $(this).removeClass("complete");
@@ -173,9 +301,113 @@ $(document).ready(function () {
             $(this).addClass("complete");
             $(this).data("")
         }
-
-        checkCollections();
         saveData();
+    });
+
+    $("#reset").click(function () {
+        var reset = confirm("Reset all artefact counts to 0?");
+
+        if(reset) {
+            $(".artefactinput").val(0);
+            $(".restoredinput").val(0);
+            $(".artefactpotential").text("0.0");
+            update();
+            calculateTotalPotentialXP();
+        }
+    })
+
+    $(".collection").click(function () {
+        if (!$(this).hasClass("complete")) {
+            $(this).addClass("complete");
+        } else {
+            $(this).removeClass("complete");
+        }
+
+        saveData();
+    });
+
+
+    $(".material").click(function() {
+        if(!$(this).hasClass("unneeded")) {
+            $(this).addClass("unneeded");
+        } else {
+            $(this).removeClass("unneeded");
+        }
+    });
+
+    $(".materialStorageInput input").change(function() {
+        if($(this).val() <= 0) {
+            $(this).val(0);
+        }
+    });
+
+    $("#blinder").click(function(e) {
+        if(e.target == this) {
+            saveStorage();
+        }
+    });
+
+    $("#searchBox").on("keyup search", function() {
+        removeHighlights();
+        var str = $(this).val().toLowerCase();
+
+        if(str.indexOf("digsite:") > -1) {
+            console.log("Searching digsites");
+            if(str.indexOf("zaros") > -1) {
+                for(i in recipes) {
+                    var recipe = recipes[i];
+
+                    if(recipe.alignment.indexOf("Zarosian") > -1) {
+                        highlight(recipe.artefact);
+                    }
+
+                }
+            } else if(str.indexOf("zamorak") > -1) {
+                for(i in recipes) {
+                    var recipe = recipes[i];
+
+                    if(recipe.alignment.indexOf("Zamorakian") > -1) {
+                        highlight(recipe.artefact);
+                    }
+
+                }
+            } else if(str.indexOf("saradomin") > -1) {
+                for(i in recipes) {
+                    var recipe = recipes[i];
+
+                    if(recipe.alignment.indexOf("Saradominist") > -1) {
+                        highlight(recipe.artefact);
+                    }
+
+                }
+            } else if(str.indexOf("armadyl") > -1) {
+                for(i in recipes) {
+                    var recipe = recipes[i];
+
+                    if(recipe.alignment.indexOf("Armadylean") > -1) {
+                        highlight(recipe.artefact);
+                    }
+                }
+            } else if(str.indexOf("bandos") > -1) {
+                for(i in recipes) {
+                    var recipe = recipes[i];
+
+                    if(recipe.alignment.indexOf("Bandosian") > -1) {
+                        highlight(recipe.artefact);
+                    }
+                }
+            }
+        } else {
+            $(".artefact").each(function() {
+                if($(this).data("artefact").toLowerCase().includes(str)) {
+                    $(this).css("display", "table-row").addClass("highlight");
+                } else {
+                    if(!$(this).hasClass("highlight")) {
+                        $(this).css("display", "none");
+                    }
+                }
+            });
+        }
     });
 });
 
@@ -214,6 +446,7 @@ function calculateTotalMaterials() {
         var recipe = getRecipeByArtefact(artefact);
 
         if (numToMake > 0) {
+            var runningTotal = 0;
             for (i = 0; i < recipe.mats.length; i++) {
                 var mat = recipe.mats[i].name;
                 var numRequired = recipe.mats[i].numRequired;
@@ -228,6 +461,45 @@ function calculateTotalMaterials() {
             }
         }
     });
+
+
+    $(".material").each(function () {
+        var $material = $(this);
+        var mat = $material.data("material");
+        var $amountNeeded = $(this).children(".materialamount");
+        var numNeeded = parseInt($amountNeeded.text());
+
+        if(numNeeded > 0) {
+            if(localStorage.getItem("materialstorage") !== null) {
+                var materialStorage = JSON.parse(localStorage.getItem("materialstorage"));
+                var numberInStorage = materialStorage[mat];
+
+                if (numberInStorage == null) {
+                    numberInStorage = 0;
+                }
+
+                var actualAmountNeeded = numNeeded - numberInStorage;
+
+                //$amountNeeded.text(actualAmountNeeded + " (Total: " + numNeeded + ")");
+                if(actualAmountNeeded <= 0) {
+                    actualAmountNeeded = 0;
+                    $material.addClass("unneeded");
+                } else {
+                    $material.removeClass("unneeded");
+                }
+                $amountNeeded.text(actualAmountNeeded + " (").append($("<b/>", { text: numNeeded })).append(")");
+            }
+        }
+
+
+
+
+        if ($(this).find(".materialamount").text() == "0") {
+            $(this).hide();
+        } else {
+            $(this).show();
+        }
+    });
 }
 
 function calculateTotalPotentialXP() {
@@ -236,7 +508,9 @@ function calculateTotalPotentialXP() {
         total += parseFloat($(this).text().replace(/,/g, ""));
     });
 
-    total += total * 0.06;
+    if ($("#outfit").is(":checked")) {
+        total += total * 0.06;
+    }
 
     $("#potentialXPGain").text("Total Potential XP: " + numberWithCommas(parseInt(total)));
 
@@ -251,9 +525,13 @@ function calculateTotalPotentialXP() {
         }
     }
 
+    var remainingXP = parseInt(levels[lvl]) - xp;
+
     $("#endXP").text("Ending XP: " + numberWithCommas(parseInt(xp)));
-    $("#endLvl").text("Ending lvl: " + lvl);
+    $("#endLvl").text("Ending lvl: " + lvl + " (" + numberWithCommas(parseInt(remainingXP)) + " to " + parseInt(lvl + 1) + ")");
 }
+
+
 
 
 function saveData() {
@@ -261,6 +539,14 @@ function saveData() {
     $("input").each(function () {
         var id = $(this).data("id");
         var value = $(this).val();
+
+        if (id == "outfit") {
+            if ($(this).is(":checked")) {
+                value = true;
+            } else {
+                value = false;
+            }
+        }
 
         data[id] = value;
     });
@@ -273,8 +559,17 @@ function saveData() {
         collectionData[artefact] = isChecked;
     });
 
+    var collectionListData = {};
+    $(".collection").each(function() {
+        var artefact = $(this).data("collection");
+        var isChecked = $(this).hasClass("complete");
+
+        collectionListData[artefact] = isChecked;
+    });
+
     localStorage.setItem("data", JSON.stringify(data));
     localStorage.setItem("collectionData", JSON.stringify(collectionData));
+    localStorage.setItem("collectionListData", JSON.stringify(collectionListData));
 }
 
 function loadData() {
@@ -284,9 +579,14 @@ function loadData() {
         for (id in data) {
             $("input").each(function () {
                 if ($(this).data("id") == id) {
-                    $(this).val(data[id]);
-
-                    update(id, data[id], true);
+                    if (id == "outfit") {
+                        $(this).prop("checked", data[id]);
+                    } else {
+                        $(this).val(data[id]);
+                        if ($(this).hasClass("artefactinput")) {
+                          update($(this).data("artefact"), data[id], true);
+                        }
+                    }
                 }
             });
 
@@ -315,4 +615,58 @@ function loadData() {
             });
         }
     }
+
+    if(localStorage.getItem("collectionListData") !== null) {
+        var collectionData = JSON.parse(localStorage.getItem("collectionListData"));
+
+        for(collection in collectionData) {
+            $(".collection").each(function () {
+                if($(this).data("collection") == collection) {
+                    if(collectionData[collection]) {
+                        $(this).addClass("complete");
+                    }
+                }
+            })
+        }
+    }
+
+    if(localStorage.getItem("materialstorage") !== null) {
+        var storageData = JSON.parse(localStorage.getItem("materialstorage"));
+
+        $(".materialStorageInput").each(function() {
+            var input = $(this).children("input");
+            var mat = input.data("materialstoragemat");
+
+            if(storageData[mat] != null) {
+                input.val(storageData[mat]);
+            } else {
+                input.val(0);
+            }
+
+        })
+    }
 }
+
+function saveStorage() {
+    var materialStorage = {};
+    $(".materialStorageInput").each(function() {
+        var input = $(this).children("input");
+
+        var mat = input.data("materialstoragemat");
+        var amount = input.val();
+        if(amount == null) {
+            amount = 0;
+        }
+
+        materialStorage[mat] = amount;
+    })
+
+    localStorage.setItem("materialstorage", JSON.stringify(materialStorage));
+
+    $("#blinder").css("display", "none");
+    calculateTotalMaterials();
+}
+
+function showMaterialStorage() {
+    $("#blinder").css("display", "block");
+};

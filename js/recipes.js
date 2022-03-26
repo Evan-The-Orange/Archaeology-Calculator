@@ -20,8 +20,9 @@ class Recipe {
 var materialList = ["Third Age iron", "Zarosian insignia", "Samite silk", "Imperial steel", "White oak", "Goldrune", "Orthenglass", "Vellum", "Cadmium red",
     "Ancient vis", "Tyrian purple", "Leather scraps", "Chaotic brimstone", "Demonhide", "Eye of Dagon", "Hellfire metal", "Keramos", "White marble",
     "Cobalt blue", "Everlight silvthril", "Star of Saradomin", "Blood of Orcus", "Stormguard steel", "Wings of War", "Animal furs", "Armadylean yellow",
-    "Malachite green", "Mark of the Kyzaj", "Vulcanised rubber", "Warforged bronze", "Fossilised bone", "Yu'biusk clay", "Aetherium alloy",
-    "Quintessence", "Soapstone"];
+    "Malachite green", "Mark of the Kyzaj", "Vulcanised rubber", "Warforged bronze", "Fossilised bone", "Yu'biusk clay", "Aetherium alloy", "Compass rose", "Felt",
+    "Quintessence", "Dragon metal", "Soapstone", "Carbon black", "Orgone", "Sapphire", "Emerald", "Ruby", "Diamond", "Dragonstone", "White candle", "Bronze bar", "Silver bar", "Clockwork", "Phoenix feather", "Weapon poison (3)",
+    "Rope", "Black mushroom ink", "Molten glass", "Death rune"];
 
 var recipes = [
     new Recipe("Venator dagger", 5, 305.1, [
@@ -108,7 +109,8 @@ var recipes = [
     ], "Zamorakian I"),
     new Recipe("Ritual dagger", 36, 861.5, [
         new Material("Goldrune", 16),
-        new Material("Hellfire metal", 24)
+        new Material("Hellfire metal", 24),
+        new Material("Ruby", 1)
     ], "Zamorakian I", 3),
     new Recipe("'Frying pan'", 42, 1073.3, [
         new Material("Third Age iron", 20),
@@ -116,7 +118,8 @@ var recipes = [
     ], "Saradominist I"),
     new Recipe("Hallowed lantern", 42, 1073.3, [
         new Material("Third Age iron", 20),
-        new Material("Keramos", 24)
+        new Material("Keramos", 24),
+        new Material("White candle", 1)
     ], "Saradominist I"),
     new Recipe("Branding iron", 45, 1283.3, [
         new Material("Third Age iron", 14),
@@ -136,7 +139,8 @@ var recipes = [
     new Recipe("Legatus pendant", 47, 1423.3, [
         new Material("Third Age iron", 16),
         new Material("Goldrune", 18),
-        new Material("Ancient vis", 12)
+        new Material("Ancient vis", 12),
+        new Material("Dragonstone", 1)
     ], "Zarosian II", 3),
     new Recipe("Ceremonial unicorn ornament", 48, 1493.3, [
         new Material("Keramos", 26),
@@ -170,7 +174,8 @@ var recipes = [
     new Recipe("Pontifex signet ring", 58, 2193.3, [
         new Material("Third Age iron", 16),
         new Material("Goldrune", 18),
-        new Material("Ancient vis", 22)
+        new Material("Ancient vis", 22),
+        new Material("Dragonstone", 1)
     ], "Zarosian II", 3),
     new Recipe("'Incite Fear' spell scroll", 58, 2193.3, [
         new Material("Vellum", 20),
@@ -198,7 +203,8 @@ var recipes = [
     new Recipe("'Lust' metal sculpture", 65, 3500.0, [
         new Material("Third Age iron", 16),
         new Material("Eye of Dagon", 24),
-        new Material("Goldrune", 24)
+        new Material("Goldrune", 24),
+        new Material("Ruby", 1)
     ], "Zamorakian II", 3),
     new Recipe("Chaos star", 68, 4200.0, [
         new Material("Chaotic brimstone", 28),
@@ -212,10 +218,12 @@ var recipes = [
     new Recipe("Bronze Dominion medal", 69, 4433.3, [
         new Material("Everlight silvthril", 36),
         new Material("Star of Saradomin", 26),
+        new Material("Bronze bar", 1)
     ], "Saradominist II", 3),
     new Recipe("Silver Dominion medal", 69, 4433.3, [
         new Material("Everlight silvthril", 36),
-        new Material("Star of Saradomin", 26)
+        new Material("Star of Saradomin", 26),
+        new Material("Silver bar", 1)
     ], "Saradominist II", 3),
     new Recipe("Dominion torch", 69, 4433.3, [
         new Material("Goldrune", 12),
@@ -233,7 +241,8 @@ var recipes = [
     ], "Armadylean I"),
     new Recipe("Toy war golem", 70, 4666.7, [
         new Material("Third Age iron", 36),
-        new Material("White oak", 30)
+        new Material("White oak", 30),
+        new Material("Clockwork", 1)
     ], "Armadylean I"),
     new Recipe("Decorative vase", 72, 5133.3, [
         new Material("White marble", 36),
@@ -241,11 +250,13 @@ var recipes = [
     ], "Saradominist II"),
     new Recipe("Patera bowl", 72, 5133.3, [
         new Material("Keramos", 36),
-        new Material("Goldrune", 30)
+        new Material("Goldrune", 30),
+        new Material("Sapphire", 1)
     ], "Saradominist II"),
     new Recipe("Kantharos cup", 72, 5133.3, [
         new Material("Everlight silvthril", 30),
-        new Material("Orthenglass", 36)
+        new Material("Orthenglass", 36),
+        new Material("Sapphire", 1)
     ], "Saradominist II"),
     new Recipe("Ceremonial mace", 74, 5600.0, [
         new Material("Imperial steel", 20),
@@ -260,11 +271,13 @@ var recipes = [
     new Recipe("Pontifex Maximus figurine", 74, 5600.0, [
         new Material("Zarosian insignia", 24),
         new Material("Ancient vis", 16),
-        new Material("Goldrune", 28)
+        new Material("Goldrune", 28),
+        new Material("Dragonstone", 1)
     ], "Zarosian II", 3),
     new Recipe("Avian song-egg player", 76, 6066.7, [
         new Material("Stormguard steel", 36),
-        new Material("Armadylean yellow", 32)
+        new Material("Armadylean yellow", 32),
+        new Material("Diamond", 1)
     ], "Armadylean I", 3),
     new Recipe("Keshik drum", 76, 6066.7, [
         new Material("Wings of War", 16),
@@ -297,7 +310,8 @@ var recipes = [
     ], "Armadylean I"),
     new Recipe("Ceremonial plume", 81, 7388.9, [
         new Material("Armadylean yellow", 38),
-        new Material("Goldrune", 34)
+        new Material("Goldrune", 34),
+        new Material("Phoenix feather", 1)
     ], "Armadylean I", 3),
     new Recipe("Peacocking parasol", 81, 7388.9, [
         new Material("Armadylean yellow", 22),
@@ -331,7 +345,8 @@ var recipes = [
     new Recipe("Pontifex censer", 81, 7388.9, [
         new Material("Third Age iron", 20),
         new Material("Ancient vis", 20),
-        new Material("Goldrune", 32)
+        new Material("Goldrune", 32),
+        new Material("Dragonstone", 1)
     ], "Zarosian II", 3),
     new Recipe("Pontifex crozier", 81, 7388.9, [
         new Material("Imperial steel", 20),
@@ -351,12 +366,14 @@ var recipes = [
     ], "Bandosian I"),
     new Recipe("Yurkolgokh stink grenade", 83, 8166.7, [
         new Material("Yu'biusk clay", 38),
-        new Material("Vulcanised rubber", 36)
+        new Material("Vulcanised rubber", 36),
+        new Material("Weapon poison (3)", 1)
     ], "Bandosian I"),
     new Recipe("Dominarian device", 84, 8555.6, [
         new Material("Everlight silvthril", 30),
         new Material("Keramos", 22),
-        new Material("Third Age iron", 22)
+        new Material("Third Age iron", 22),
+        new Material("Clockwork", 1)
     ], "Saradominist III"),
     new Recipe("Fishing trident", 84, 8555.6, [
         new Material("Star of Saradomin", 22),
@@ -369,7 +386,8 @@ var recipes = [
     ], "Armadylean II"),
     new Recipe("Talon-3 razor wing", 85, 8944.4, [
         new Material("Aetherium alloy", 40),
-        new Material("Wings of War", 34)
+        new Material("Wings of War", 34),
+        new Material("Rope", 1)
     ], "Armadylean II"),
     new Recipe("Necromantic focus", 86, 9333.3, [
         new Material("Imperial steel", 20),
@@ -399,13 +417,21 @@ var recipes = [
         new Material("White oak", 12),
         new Material("Samite silk", 12),
         new Material("Vellum", 12),
-        new Material("Cadmium red")
+        new Material("Cadmium red", 42)
     ], "Zamorakian III", 3),
     new Recipe("'Torment' metal sculpture", 89, 10500.0, [
         new Material("Eye of Dagon", 20),
         new Material("Third Age iron", 20),
         new Material("Hellfire metal", 38)
     ], "Zamorakian III"),
+    new Recipe("Ritual bell", 90, 10888.9, [
+        new Material("Goldrune", 40),
+        new Material("Compass rose", 38)
+    ], "Dragonkin I"),
+    new Recipe("Pasaha", 90, 10888.9, [
+        new Material("Goldrune", 38),
+        new Material("Felt", 40)
+    ], "Dragonkin I"),
     new Recipe("Prototype gravimeter", 91, 11277.8, [
         new Material("Quintessence", 34),
         new Material("Leather scraps", 20),
@@ -413,7 +439,8 @@ var recipes = [
     ], "Armadylean II"),
     new Recipe("Songbird recorder", 91, 11277.8, [
         new Material("Stormguard steel", 44),
-        new Material("Orthenglass", 36)
+        new Material("Orthenglass", 36),
+        new Material("Diamond", 1)
     ], "Armadylean II", 3),
     new Recipe("Amphora", 92, 11666.7, [
         new Material("Everlight silvthril", 34),
@@ -446,7 +473,7 @@ var recipes = [
     new Recipe("'Nosorog!' sculpture", 94, 13333.3, [
         new Material("Yu'biusk clay", 30),
         new Material("Malachite green", 24),
-        new Material("Soapstone", 30)
+        new Material("Warforged bronze", 30)
     ], "Bandosian II"),
     new Recipe("Stormguard gerege", 95, 14166.7, [
         new Material("Stormguard steel", 36),
@@ -458,6 +485,15 @@ var recipes = [
         new Material("Wings of War", 28),
         new Material("White oak", 20)
     ], "Armadylean II"),
+    new Recipe("Vazara", 96, 15000, [
+        new Material("Dragon metal", 30),
+        new Material("Compass rose", 28),
+        new Material("Goldrune", 28)
+    ], "Dragonkin I"),
+    new Recipe("Kilaya", 96, 15000, [
+        new Material("Dragon metal", 46),
+        new Material("Compass rose", 40)
+    ], "Dragonkin I"),
     new Recipe("Garagorshuun anchor", 97, 15833.3, [
         new Material("Warforged bronze", 32),
         new Material("Mark of the Kyzaj", 26),
@@ -483,7 +519,8 @@ var recipes = [
     ], "Armadylean II"),
     new Recipe("Golem instruction", 98, 16666.7, [
         new Material("Quintessence", 46),
-        new Material("Vellum", 44)
+        new Material("Vellum", 44),
+        new Material("Black mushroom ink", 1)
     ], "Armadylean II", 3),
     new Recipe("Hellfire haladie", 98, 16666.7, [
         new Material("Hellfire metal", 44),
@@ -499,16 +536,30 @@ var recipes = [
         new Material("White oak", 26),
         new Material("Orthenglass", 26)
     ], "Zamorakian III"),
+    new Recipe("Dragonkin calendar", 99, 17500, [
+        new Material("Orgone", 56),
+        new Material("Carbon black", 28),
+        new Material("Compass rose", 28)
+    ], "Dragonkin I"),
+    new Recipe("Dragonkin staff", 99, 17500, [
+        new Material("Orgone", 56),
+        new Material("Compass rose", 34)
+    ], "Dragonkin I"),
+    new Recipe("Death mask", 99, 17500, [
+        new Material("Orgone", 56),
+        new Material("Soapstone", 34)
+    ], "Dragonkin I"),
     new Recipe("Dorgeshuun spear", 100, 18666.7, [
         new Material("Warforged bronze", 50),
         new Material("White oak", 42)
     ], "Bandosian II"),
     new Recipe("'Forged in War' sculpture", 100, 18666.7, [
         new Material("Warforged bronze", 50),
-        new Material("Yu'biusk clay")
+        new Material("Yu'biusk clay", 42),
+        new Material("Emerald", 1)
     ], "Bandosian II"),
     new Recipe("Kopis dagger", 100, 18666.7, [
-        new Material("Everlight silvthril", 100),
+        new Material("Everlight silvthril", 50),
         new Material("Leather scraps", 42)
     ], "Saradominist III"),
     new Recipe("Xiphos short sword", 100, 18666.7, [
@@ -522,8 +573,25 @@ var recipes = [
     ], "Zarosian III", 3),
     new Recipe("Vigorem vial", 100, 18666.7, [
         new Material("Imperial steel", 54),
-        new Material("Ancient vis", 38)
+        new Material("Ancient vis", 38),
+        new Material("Molten glass", 1)
     ], "Zarosian III"),
+    new Recipe("Dragon scalpel", 101, 19833.3, [
+        new Material("Dragon metal", 52),
+        new Material("Felt", 42)
+    ], "Dragonkin II"),
+    new Recipe("Protective goggles", 101, 19833.3, [
+        new Material("Felt", 42),
+        new Material("Orthenglass", 52)
+    ], "Dragonkin II"),
+    new Recipe("Dragon burner", 102, 21000, [
+        new Material("Dragon metal", 52),
+        new Material("Orgone", 42)
+    ], "Dragonkin II"),
+    new Recipe("Orthenglass flask", 102, 21000, [
+        new Material("Dragon metal", 34),
+        new Material("Orthenglass", 60)
+    ], "Dragonkin II"),
     new Recipe("Blackfire lance", 103, 22166.7, [
         new Material("Aetherium alloy", 50),
         new Material("Quintessence", 46)
@@ -543,21 +611,21 @@ var recipes = [
         new Material("Third Age iron", 34),
         new Material("Star of Saradomin", 20)
     ], "Bandosian III", 3),
-    new Recipe("'Possesion' metal sculpture", 104, 23333.3, [
+    new Recipe("'Possession' metal sculpture", 104, 23333.3, [
         new Material("Eye of Dagon", 24),
         new Material("Chaotic brimstone", 30),
         new Material("Third Age iron", 44)
-    ], "Zamorakian IV"),
+    ], "Zamorakian III"),
     new Recipe("Trishula", 104, 23333.3, [
         new Material("Hellfire metal", 48),
         new Material("Eye of Dagon", 30),
         new Material("Third Age iron", 20)
-    ], "Zamorakian IV"),
-    new Recipe("Tsutaroth piercing", 104, 23333.3, [
+    ], "Zamorakian III"),
+    new Recipe("Tsutsaroth piercing", 104, 23333.3, [
         new Material("Hellfire metal", 44),
         new Material("Chaotic brimstone", 30),
         new Material("Cadmium red", 24)
-    ], "Zamorakian IV"),
+    ], "Zamorakian III"),
     new Recipe("'The Pride of Padosan' painting", 105, 24500, [
         new Material("Cobalt blue", 52),
         new Material("White oak", 16),
@@ -576,6 +644,20 @@ var recipes = [
         new Material("Samite silk", 16),
         new Material("Vellum", 16)
     ], "Saradominist IV", 3),
+    new Recipe("Singing bowl", 106, 25666.7, [
+        new Material("Orgone", 60),
+        new Material("Dragon metal", 40)
+    ], "Dragonkin III"),
+    new Recipe("Meditation pipe", 106, 25666.7, [
+        new Material("Orgone", 60),
+        new Material("Dragon metal", 40)
+    ], "Dragonkin III"),
+    new Recipe("Personal totem", 106, 25666.7, [
+        new Material("Orgone", 48),
+        new Material("Carbon black", 26),
+        new Material("Compass rose", 26)
+    ], "Dragonkin III"),
+
     new Recipe("Ancient magic tablet", 107, 27000, [
         new Material("Ancient vis", 40),
         new Material("Blood of Orcus", 64)
@@ -590,6 +672,16 @@ var recipes = [
         new Material("Ancient vis", 24),
         new Material("Blood of Orcus", 40)
     ], "Zarosian III"),
+    new Recipe("Master control", 108, 28333.3, [
+        new Material("Orgone", 30),
+        new Material("Carbon black", 32),
+        new Material("Compass rose", 44)
+    ], "Dragonkin III"),
+    new Recipe("Lingam stone", 108, 28333.3, [
+        new Material("Orgone", 44),
+        new Material("Carbon black", 30),
+        new Material("Compass rose", 32)
+    ], "Dragonkin III"),
     new Recipe("'The Enlightened Soul' scroll", 109, 29666.7, [
         new Material("Star of Saradomin", 50),
         new Material("Vellum", 60)
@@ -611,12 +703,12 @@ var recipes = [
         new Material("Chaotic brimstone", 52),
         new Material("White oak", 50),
         new Material("Hellfire metal", 30)
-    ], "Zamorakian III"),
+    ], "Zamorakian IV"),
     new Recipe("Virius trophy", 110, 31000, [
         new Material("Demonhide", 44),
         new Material("White oak", 34),
         new Material("Orthenglass", 34)
-    ], "Zamorakian III"),
+    ], "Zamorakian IV"),
     new Recipe("Flat cap", 111, 32333.3, [
         new Material("Armadylean yellow", 60),
         new Material("Samite silk", 54)
@@ -641,20 +733,32 @@ var recipes = [
         new Material("Quintessence", 34),
         new Material("Goldrune", 34)
     ], "Armadylean III"),
+    new Recipe("Xolo hard hat", 113, 35000, [
+        new Material("Goldrune", 54),
+        new Material("Dragon metal", 66)
+    ], "Dragonkin IV"),
+    new Recipe("Xolo pickaxe", 113, 35000, [
+        new Material("Goldrune", 36),
+        new Material("Dragon metal", 66),
+        new Material("Orgone", 34)
+    ], "Dragonkin IV"),
     new Recipe("Praetorian hood", 114, 36666.7, [
         new Material("Ancient vis", 36),
         new Material("Samite silk", 48),
-        new Material("Zarosian insignia", 40)
+        new Material("Zarosian insignia", 40),
+        new Material("Death rune", 30)
     ], "Zarosian IV", 3),
     new Recipe("Praetorian robes", 114, 36666.7, [
         new Material("Ancient vis", 30),
         new Material("Samite silk", 54),
-        new Material("Zarosian insignia", 40)
+        new Material("Zarosian insignia", 40),
+        new Material("Death rune", 50)
     ], "Zarosian IV"),
     new Recipe("Praetorian staff", 114, 36666.7, [
         new Material("Imperial steel", 36),
         new Material("Ancient vis", 58),
-        new Material("Zarosian insignia", 30)
+        new Material("Zarosian insignia", 30),
+        new Material("Death rune", 100)
     ], "Zarosian IV"),
     new Recipe("Kal-i-kran chieftain crown", 115, 38333.3, [
         new Material("Yu'biusk clay", 66),
@@ -675,12 +779,12 @@ var recipes = [
         new Material("Eye of Dagon", 40),
         new Material("Goldrune", 40)
     ], "Zamorakian IV", 3),
-    new Recipe("Tsusaroth pauldron", 116, 40000, [
+    new Recipe("Tsutsaroth pauldron", 116, 40000, [
         new Material("Hellfire metal", 40),
         new Material("Goldrune", 50),
         new Material("Eye of Dagon", 40)
     ], "Zamorakian IV"),
-    new Recipe("Tustsaroth urumi", 116, 40000, [
+    new Recipe("Tsutsaroth urumi", 116, 40000, [
         new Material("Hellfire metal", 50),
         new Material("Eye of Dagon", 40),
         new Material("Third Age iron", 40)
@@ -699,7 +803,7 @@ var recipes = [
         new Material("Soapstone", 40),
         new Material("Goldrune", 24)
     ], "Armadylean III", 3),
-    new Recipe("Quinessence counter", 118, 43333.3, [
+    new Recipe("Quintessence counter", 118, 43333.3, [
         new Material("Quintessence", 54),
         new Material("Stormguard steel", 40),
         new Material("White oak", 40)
@@ -734,8 +838,127 @@ var recipes = [
         new Material("Yu'biusk clay", 50),
         new Material("Malachite green", 44),
         new Material("Soapstone", 44)
-    ], "Bandosian III", 4)
+    ], "Bandosian III", 4),
+    new Recipe("Xolo spear", 119, 45000, [
+        new Material("Dragon metal", 74),
+        new Material("Orgone", 64)
+    ], "Dragonkin IV"),
+    new Recipe("Xolo shield", 119, 45000, [
+        new Material("Goldrune", 52),
+        new Material("Orgone", 44),
+        new Material("Felt", 42)
+    ], "Dragonkin IV"),
+    new Recipe("'Raksha' idol", 120, 46666.7, [
+        new Material("Orgone", 56),
+        new Material("Dragon metal", 44),
+        new Material("Goldrune", 40)
+    ], "Dragonkin IV"),
+    new Recipe("Gold dish", 120, 46666.7, [
+        new Material("Goldrune", 86),
+        new Material("Dragon metal", 54)
+    ], "Dragonkin IV"),
+
+    //sennisten digsite
+    new Recipe("Apex Cap", 60, 2333.3, [
+        new Material("Samite silk", 28),
+        new Material("Leather scraps", 12),
+        new Material("Ancient vis", 20),
+    ], "Zarosian V"),
+    new Recipe("Curse tablet", 60, 2333.3, [
+        new Material("Imperial steel", 16),
+        new Material("Zarosian insignia", 12),
+        new Material("Soapstone", 20),
+        new Material("Blood of Orcus", 12),
+    ], "Zarosian V"),
+    new Recipe("Funerary urn of shadow", 60, 2333.3, [
+        new Material("Soapstone", 26),
+        new Material("Tyrian purple	", 14),
+        new Material("Ancient vis", 20),
+    ], "Zarosian V"),
+    new Recipe("Infula robes", 62, 2800, [
+        new Material("Samite silk	", 26),
+        new Material("Leather scraps", 12),
+        new Material("Goldrune", 12),
+        new Material("Tyrian purple	", 12),
+    ], "Zarosian V"),
+    new Recipe("Funerary urn of smoke", 62, 2800, [
+        new Material("Soapstone", 28),
+        new Material("Tyrian purple", 14),
+        new Material("Ancient vis", 20),
+    ], "Zarosian V"),
+    new Recipe("Hand of the Ancients", 62, 2800, [
+        new Material("Blood of Orcus", 12),
+        new Material("White oak", 18),
+        new Material("Ancient vis", 14),
+        new Material("Goldrune", 18),
+    ], "Zarosian V"),
+    new Recipe("Decorative amphora", 63, 3033.3, [
+        new Material("Tyrian purple", 16),
+        new Material("Ancient vis", 18),
+        new Material("Soapstone", 28),
+    ], "Zarosian VI"),
+    new Recipe("Funerary urn of ice", 63, 3033.3, [
+        new Material("Soapstone	", 28),
+        new Material("Tyrian purple", 14),
+        new Material("Ancient vis", 20),
+    ], "Zarosian VI"),
+    new Recipe("Loarnab rod", 63, 3033.3, [
+        new Material("White oak", 28),
+        new Material("Blood of Orcus", 16),
+        new Material("Imperial steel", 18),
+    ], "Zarosian VI"),
+    new Recipe("Inquisitor's seal", 64, 3266.7, [
+        new Material("Tyrian purple", 14),
+        new Material("Zarosian insignia", 20),
+        new Material("Ancient vis", 14),
+        new Material("Goldrune", 14),
+    ], "Zarosian VI"),
+    new Recipe("Inquisitor's ceremonial mask", 64, 3266.7, [
+        new Material("Ancient vis", 14),
+        new Material("Leather scraps", 12),
+        new Material("Blood of Orcus", 14),
+        new Material("Samite silk", 22),
+    ], "Zarosian VI"),
+    new Recipe("Inquisitor's ceremonial armour", 64, 3266.7, [
+        new Material("Leather scraps", 14),
+        new Material("Samite silk", 30),
+        new Material("Tyrian purple	", 18),
+    ], "Zarosian VI"),
+    new Recipe("Gladiator sword", 66, 3773.3, [
+        new Material("Imperial steel", 30),
+        new Material("Goldrune", 18),
+        new Material("Zarosian insignia", 16),
+    ], "Zarosian VII"),
+    new Recipe("Gladiator helmet", 66, 3773.3, [
+        new Material("Imperial steel", 30),
+        new Material("Blood of Orcus", 16),
+        new Material("Leather scraps", 18),
+    ], "Zarosian VII"),
+    new Recipe("Funerary urn of blood", 66, 3773.3, [
+        new Material("Soapstone", 30),
+        new Material("Tyrian purple", 14),
+        new Material("Blood of Orcus", 20),
+    ], "Zarosian VII"),
+    new Recipe("'The Serpent's Fall' carving", 67, 3966.7, [
+        new Material("Vellum", 16),
+        new Material("Tyrian purple", 24),
+        new Material("Blood of Orcus", 12),
+        new Material("White oak", 12),
+    ], "Zarosian VII"),
+    new Recipe("Model chariot", 67, 3966.7, [
+        new Material("Vellum", 12),
+        new Material("Imperial steel", 18),
+        new Material("Goldrune", 20	),
+        new Material("Zarosian insignia", 14),
+    ], "Zarosian VII"),
+    new Recipe("Funerary urn of miasma", 67, 3966.7, [
+        new Material("Soapstone", 30),
+        new Material("Tyrian purple	", 14),
+        new Material("Ancient vis", 20),
+    ], "Zarosian VII"),
 ];
+
+recipes.sort((a, b) => a.level - b.level);
 
 function getRecipeByArtefact(artefact) {
     for (i = 0; i < recipes.length; i++) {
@@ -750,6 +973,3 @@ function getMatsByArtefact(artefact) {
 
     return recipe.mats;
 }
-
-
-//TODO: Add collections?

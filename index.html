@@ -20,7 +20,8 @@
                 <span class="cell">Artefact</span>
                 <span class="cell">Level</span>
                 <span class="cell">XP each</span>
-                <span class="cell">Number owned</span>
+                <span class="cell">Damaged owned</span>
+                <span class="cell">Restored owned</span>
                 <span class="cell">Potential XP</span>
             </div>
         </div>
@@ -32,20 +33,26 @@
 
 
     <div id="sidebar">
+        <a id="showMaterialStorage" href="javascript:showMaterialStorage();">Manage Material Storage</a>
         <div id="materials">
             <div class="materiallistheader">
                 <span class="cell">Material</span>
-                <span class="cell">Needed</span>
+                <span class="cell">Needed (Total)</span>
             </div>
         </div>
     </div>
 
     <div id="leftsidebar">
         <div id="statform">
-            <label for="expInput">Current XP:</label>
+            <label for="expInput" class="inline">Current XP:</label>
             <input type="number" name="expInput" id="expInput" value="0" data-id="expInput"/>
 
             <span id="yourLevel">Level 1</span>
+
+            <div class="outfitbox">
+                <label for="outfit">Archaeologist Outfit: </label>
+                <input name="outfit" id="outfit" type="checkbox" data-id="outfit">
+            </div>
 
             <span id="potentialXPGain">Total Potential XP: 0</span>
 
@@ -53,8 +60,30 @@
             <span id="endLvl">Ending Lvl: 1</span>
         </div>
 
+        <div style="text-align: center;">
+            <button id="reset">Reset artefact counts</button>
+        </div>
+
+        <div style="text-align: center; margin-top: 10px;">
+            <span>Search Artefacts</span>
+            <input type="search" id="searchBox">
+        </div>
+
         <div id="collections">
-            
+
+        </div>
+    </div>
+
+    <div id="blinder">
+        <div id="popup">
+            <span>Material Storage</span>
+            <div id="materialStorage">
+
+            </div>
+
+            <div class="popupSave">
+                <button onclick="saveStorage();">Save Storage</button>
+            </div>
         </div>
     </div>
 </body>
